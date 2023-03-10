@@ -8,7 +8,7 @@
         /// <param name="userId"></param>
         public UserWallet(string userId)
         {
-            id = PrimaryKey.Generate();
+            id = PrimaryKey.GetUniqueNumStr();
             this.currency = "USD";
             this.currentBalance = 0;
             this.userId = userId;

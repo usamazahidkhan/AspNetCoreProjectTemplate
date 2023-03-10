@@ -10,7 +10,7 @@
 
         public VpnAccount(string userName, string password, string userId, DateTime? expiredOn)
         {
-            id = PrimaryKey.Generate();
+            id = PrimaryKey.GetUniqueNumStr();
             this.userName = userName ?? throw new ArgumentNullException(nameof(userName));
             this.password = password ?? throw new ArgumentNullException(nameof(password));
             this.userId = userId ?? throw new ArgumentNullException(nameof(userId));

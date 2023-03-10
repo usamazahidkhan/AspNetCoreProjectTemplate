@@ -10,7 +10,7 @@ namespace ProjectTemplate.Dashboard.Services
 
         public async Task SendEmailAsync(string email, string subject, string htmlMessage)
         {
-            await SendAsync(subject, htmlMessage, email);
+            //await SendAsync(subject, htmlMessage, email);
         }
     }
 }

@@ -1,84 +1,90 @@
-﻿<aside class="navbar navbar-vertical navbar-expand-lg navbar-dark" style="background-color: #090fa4 ">
-	<div class="container-fluid">
-		<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#sidebar-menu" aria-controls="sidebar-menu" aria-expanded="false" aria-label="Toggle navigation">
-			<span class="navbar-toggler-icon"></span>
-		</button>
-		<p class="navbar-brand ">
-			<a href=".">
-				<img src="/logo.png" width="80" height="80" alt="Tiny VPN" class="d-none d-lg-block">
-				<img src="/logo.png" width="67" height="58" alt="Tiny VPN" class="d-block d-lg-none">
-			</a>
-		</p>
-		<div class="navbar-nav flex-row d-lg-none">
-			<div class="nav-item dropdown">
-				<a href="#" class="nav-link d-flex lh-1 text-reset p-0" data-bs-toggle="dropdown" aria-label="Open user menu">
-					<span class="avatar avatar-sm" style="background-image: url(./static/avatars/000m.jpg)"></span>
-					<div class="d-none d-xl-block ps-2">
-						<div>Paweł Kuna</div>
-						<div class="mt-1 small text-muted">UI Designer</div>
-					</div>
-				</a>
-				<div class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-					<a href="#" class="dropdown-item">Status</a>
-					<a href="./profile.html" class="dropdown-item">Profile</a>
-					<a href="#" class="dropdown-item">Feedback</a>
-					<div class="dropdown-divider"></div>
-					<a href="./settings.html" class="dropdown-item">Settings</a>
-					<a href="./sign-in.html" class="dropdown-item">Logout</a>
-				</div>
-			</div>
-		</div>
-		<div class="collapse navbar-collapse" id="sidebar-menu">
-			<ul class="navbar-nav pt-lg-3">
-				@foreach (var item in navItems)
-				{
-					if (item.isHeading)
-					{
-						<li class="nav-item ms-4 mt-2">
-							<h5 style="color:#b9b9b9" class="">@item.text</h5>
-						</li>
-					}
-					else
-					{
-						<li class="nav-item mb-2">
-							<a class="nav-link ms-3" href="@item.url">
-								<span class="text-white nav-link-icon">
-									<i data-feather="@item.icon"></i>
-								</span>
-								<span class="nav-link-title ms-3 text-white">
-									@item.text
-								</span>
-							</a>
-						</li>
-					}
-				}
-			</ul>
-		</div>
-	</div>
+﻿<style>
+    .navbar-dark {
+        --tblr-navbar-bg: #000b22;
+    }
+</style>
+
+<aside class="navbar navbar-vertical navbar-expand-lg navbar-dark shadow-lg">
+    <div class="container-fluid">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#sidebar-menu" aria-controls="sidebar-menu" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <p class="navbar-brand ">
+            <a href=".">
+                <img src="/logo.png" width="80" height="80" alt="Tiny VPN" class="d-none d-lg-block">
+                <img src="/logo.png" width="67" height="58" alt="Tiny VPN" class="d-block d-lg-none">
+            </a>
+        </p>
+        <div class="navbar-nav flex-row d-lg-none">
+            <div class="nav-item dropdown">
+                <a href="#" class="nav-link d-flex lh-1 text-reset p-0" data-bs-toggle="dropdown" aria-label="Open user menu">
+                    <span class="avatar avatar-sm" style="background-image: url(./static/avatars/000m.jpg)"></span>
+                    <div class="d-none d-xl-block ps-2">
+                        <div>Paweł Kuna</div>
+                        <div class="mt-1 small text-muted">UI Designer</div>
+                    </div>
+                </a>
+                <div class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
+                    <a href="#" class="dropdown-item">Status</a>
+                    <a href="./profile.html" class="dropdown-item">Profile</a>
+                    <a href="#" class="dropdown-item">Feedback</a>
+                    <div class="dropdown-divider"></div>
+                    <a href="./settings.html" class="dropdown-item">Settings</a>
+                    <a href="./sign-in.html" class="dropdown-item">Logout</a>
+                </div>
+            </div>
+        </div>
+        <div class="collapse navbar-collapse" id="sidebar-menu">
+            <ul class="navbar-nav pt-lg-3">
+                @foreach (var item in navItems)
+                {
+                    if (item.isHeading)
+                    {
+                        <li class="nav-item ms-4 mt-3">
+                            <h5 style="color:#b9b9b9" class="">@item.text</h5>
+                        </li>
+                    }
+                    else
+                    {
+                        <li class="nav-item mb-1">
+                            <a class="nav-link ms-3" href="@item.url">
+                                <span class="nav-link-icon text-white opacity-75" >
+                                    <i data-feather="@item.icon"></i>
+                                </span>
+                                <span class="nav-link-title ms-3 text-white">
+                                    @item.text
+                                </span>
+                            </a>
+                        </li>
+                    }
+                }
+            </ul>
+        </div>
+    </div>
 </aside>
 
 @inject IJSRuntime js
 
 @code {
 
-	private List<NavItems> navItems = new() {
-		new NavItems("Manage Dashboard","","", true),
-		new NavItems("Dashboard", PageRoutes.dashboard,"airplay"),
-		new NavItems("Getting Started", PageRoutes.gettingStarted,"edit"),
-		new NavItems("VPN Accounts", PageRoutes.vpnAccounts,"user-check"),
-		new NavItems("Payments", PageRoutes.payments,"credit-card"),
-		new NavItems("Support", PageRoutes.support,"help-circle"),
-		new NavItems("Account Setting","","", true),
-		new NavItems("Profile", PageRoutes.profile,"user"),
-		new NavItems("Logout", PageRoutes.logout,"log-out"),
-	};
+    private List<NavItems> navItems = new() {
+        new NavItems("Manage Dashboard","","", true),
+        new NavItems("Dashboard", PageRoutes.dashboard,"airplay"),
+        new NavItems("Getting Started", PageRoutes.gettingStarted,"edit"),
+        new NavItems("VPN Accounts", PageRoutes.vpnAccounts,"user-check"),
+        new NavItems("Payments", PageRoutes.payments,"credit-card"),
+        new NavItems("Support", PageRoutes.support,"help-circle"),
+        new NavItems("Account Setting","","", true),
+        new NavItems("Profile", PageRoutes.profile,"user"),
+        new NavItems("Logout", PageRoutes.logout,"log-out"),
+    };
 
-	protected override async Task OnAfterRenderAsync(bool firstRender)
-	{
-		await js.InvokeVoidAsync("feather.replace");
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        await js.InvokeVoidAsync("feather.replace");
 
-		await base.OnAfterRenderAsync(firstRender);
-	}
+        await base.OnAfterRenderAsync(firstRender);
+    }
 
-	private record NavItems(string text, string url, string icon, bool isHeading = false);
+    private record NavItems(string text, string url, string icon, bool isHeading = false);
 }
