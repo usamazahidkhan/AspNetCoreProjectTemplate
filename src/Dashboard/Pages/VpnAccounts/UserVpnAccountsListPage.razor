@@ -1,0 +1,126 @@
+﻿@attribute [Route(PageRoutes.vpnAccounts)]
+
+@inject IMediator mediator
+
+<!-- Page header -->
+<div class="page-header d-print-none">
+    <div class="container-xl">
+        <div class="row g-2 align-items-center">
+            <div class="col">
+                <!-- Page pre-title -->
+                <div class="page-pretitle">
+                    Overview
+                </div>
+                <h2 class="page-title">
+                    My Vpn Accounts
+                </h2>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Page body -->
+<div class="page-body">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <MudTable Dense="true" Hover="true" Bordered="true" Striped="true"
+                          ServerData="@(new Func<TableState, Task<TableData<VpnAccountDto>>>(ServerReload))"
+                          @ref="table" class="shadow bg-light">
+                    <ToolBarContent>
+                        <div class="my-3">
+                            <MudButton Href="@PageRoutes.createVpnAccount" Size="Size.Small"
+                                       StartIcon="@Icons.Material.Sharp.Add"
+                                       Color="Color.Primary" Variant="Variant.Filled">
+                                Add Vpn Account
+                            </MudButton>
+                        </div>
+                        <MudSpacer />
+                        <div class="my-3">
+                            <MudTextField Variant="Variant.Outlined" T="string" ValueChanged="@(s => OnSearch(s))"
+                                          Placeholder="Search" Adornment="Adornment.Start"
+                                          AdornmentIcon="@Icons.Material.Filled.Search" IconSize="Size.Small"
+                                          Margin="Margin.Dense" Class="mt-0"></MudTextField>
+                        </div>
+                    </ToolBarContent>
+
+                    <HeaderContent>
+                        <MudTh>Id</MudTh>
+                        <MudTh>Created On</MudTh>
+                        <MudTh>User Name</MudTh>
+                        <MudTh>Status</MudTh>
+                        <MudTh>Expired On</MudTh>
+                        <MudTh>Actions</MudTh>
+                    </HeaderContent>
+
+                    <RowTemplate>
+                        <MudTd DataLabel="Id">@context.id</MudTd>
+                        <MudTd DataLabel="Created On">@context.createdOn.ToShortDateString()</MudTd>
+                        <MudTd DataLabel="User Name">@context.userName</MudTd>
+                        <MudTd DataLabel="Status">
+                            <MudChip Color="statusColor[context.status]"
+                                     Size="Size.Small" Variant="Variant.Filled">
+                                @context.status
+                            </MudChip>
+                        </MudTd>
+                        <MudTd DataLabel="Expired On">@context.expiredOn?.ToShortDateString() </MudTd>
+                        <MudTd DataLabel="Actions">
+                            <MudIconButton Icon="@Icons.Material.Outlined.Edit"
+                                           Href="@(PageRoutes.updateVpnAccount + $"/{context.id}")"
+                                           Size="Size.Small" Color="Color.Primary" aria-label="github"></MudIconButton>
+                            <MudIconButton Icon="@Icons.Material.Outlined.Delete"
+                                           Href="@(PageRoutes.updateVpnAccount + $"/{context.id}")"
+                                           Size="Size.Small" Color="Color.Warning" aria-label="github"></MudIconButton>
+                        </MudTd>
+                    </RowTemplate>
+
+                    <NoRecordsContent>
+                        <MudText>No matching records found</MudText>
+                    </NoRecordsContent>
+
+                    <LoadingContent>
+                        <MudText>Loading...</MudText>
+                    </LoadingContent>
+
+                    <PagerContent>
+                        <MudTablePager />
+                    </PagerContent>
+
+                </MudTable>
+            </div>
+        </div>
+    </div>
+</div>
+
+@code {
+
+    private Dictionary<VpnAccountStatus, Color> statusColor = new()
+    {
+        { VpnAccountStatus.active, Color.Success },
+        { VpnAccountStatus.pending, Color.Warning },
+        { VpnAccountStatus.suspended, Color.Error },
+        { VpnAccountStatus.expired, Color.Dark }
+    };
+
+    private IEnumerable<VpnAccountDto> pagedData;
+    private MudTable<VpnAccountDto> table;
+
+    private int totalItems;
+    private string searchString = null;
+
+    private async Task<TableData<VpnAccountDto>> ServerReload(TableState state)
+    {
+        var data = await mediator.Send(new GetVpnAccountListByUserQuery());
+
+        totalItems = data.Count();
+
+        pagedData = data.Skip(state.Page * state.PageSize).Take(state.PageSize).ToArray();
+
+        return new TableData<VpnAccountDto>() { TotalItems = totalItems, Items = pagedData };
+    }
+
+    private void OnSearch(string text)
+    {
+        searchString = text;
+        table.ReloadServerData();
+    }
+}

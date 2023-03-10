@@ -1,0 +1,96 @@
+﻿@attribute [Route(PageRoutes.updateVpnAccount + "/{id}")]
+
+@inject IMediator mediator
+@inject NavigationManager navManager
+
+<PageTitle> Update VPN Account </PageTitle>
+
+<!-- Page header -->
+<div class="page-header d-print-none">
+    <div class="container-xl">
+        <div class="row g-2 align-items-center">
+            <div class="col">
+                <!-- Page pre-title -->
+                <div class="page-pretitle">
+                    Update
+                </div>
+                <h2 class="page-title">
+                    Update VPN Account
+                </h2>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Page body -->
+<div class="page-body">
+    <div class="container-xl">
+        <div class="row justify-content-center">
+            <div class="col-12">
+                <div class="card shadow-sm">
+                    <div class="card-body">
+                        <h1 class="w-100 text-center my-2">Update Account</h1>
+                            <EditForm Model="@model" OnValidSubmit="SubmitAsync">
+                                <DataAnnotationsValidator />
+
+                                <div class="mb-3">
+                                    <MudTextField @bind-Value="vpnAccount.userName" Disabled
+                                                  Label="User Name" Variant="Variant.Outlined" Margin="Margin.Dense">
+                                    </MudTextField>
+                                </div>
+
+                                <div class="mb-3">
+                                    <MudDatePicker @bind-Date="model.expiredOn" For="@(() => model.expiredOn)"
+                                                   Label="Expired On" Variant="Variant.Outlined" Margin="Margin.Dense">
+                                    </MudDatePicker>
+                                </div>
+
+                                <MudButton ButtonType="ButtonType.Submit"
+                                           EndIcon="@Icons.Material.Sharp.Update"
+                                               class="mt-1 btn btn-primary float-end">
+                                    Update
+                                </MudButton>
+                            </EditForm>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+</div>
+
+    @code {
+
+    [Parameter]
+    public string id { get; set; }
+
+    private UpdateVpnAccountByUserCommand model = new();
+
+    private VpnAccountDto vpnAccount = new();
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            await LoadDataAsync();
+        }
+
+        await base.OnAfterRenderAsync(firstRender);
+    }
+
+    private async Task LoadDataAsync()
+    {
+        vpnAccount = await mediator.Send(new GetVpnAccountByUserQuery { id = id });
+
+        model.id = id;
+        model.expiredOn = vpnAccount.expiredOn;
+
+        StateHasChanged();
+    }
+
+    private async Task SubmitAsync()
+    {
+        if (await mediator.Send(model))
+        {
+            navManager.NavigateTo(PageRoutes.vpnAccounts);
+        }
+    }
+}

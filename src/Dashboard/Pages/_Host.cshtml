@@ -1,0 +1,59 @@
+﻿@page "/"
+@using Microsoft.AspNetCore.Components.Web
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<base href="~/" />
+
+	@*<link rel="stylesheet" href="css/bootstrap/bootstrap.min.css" />*@
+	
+	<link href="css/site.css" rel="stylesheet" />
+
+	<link rel="icon" type="image/png" href="/logo.png" />
+
+	<link href="_content/MudBlazor/MudBlazor.min.css" rel="stylesheet" />
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@@tabler/core@latest/dist/css/tabler.min.css">
+
+	<style>
+		@@import url('https://rsms.me/inter/inter.css');
+
+		:root {
+			--tblr-font-sans-serif: 'Inter Var', -apple-system, BlinkMacSystemFont, San Francisco, Segoe UI, Roboto, Helvetica Neue, sans-serif !important;
+		}
+
+		body {
+			font-feature-settings: "cv03", "cv04", "cv11" !important;
+		}
+	</style>
+
+	<component type="typeof(HeadOutlet)" render-mode="ServerPrerendered" />
+</head>
+<body>
+	<component type="typeof(ProjectTemplate.Dashboard.App)" render-mode="ServerPrerendered" />
+
+	@*<div id="blazor-error-ui">
+		<environment include="Staging,Production">
+			An error has occurred. This application may no longer respond until reloaded.
+		</environment>
+		<environment include="Development">
+			An unhandled exception has occurred. See browser dev tools for details.
+		</environment>
+		<a href="" class="reload">Reload</a>
+		<a class="dismiss">🗙</a>
+	</div>*@
+
+	<script src="https://cdn.jsdelivr.net/npm/@@tabler/core@latest/dist/js/tabler.min.js"></script>
+
+	<script src="https://unpkg.com/feather-icons"></script>
+
+	<script src="_content/MudBlazor/MudBlazor.min.js"></script>
+
+	<script src="_framework/blazor.server.js"></script>
+
+</body>
+</html>
