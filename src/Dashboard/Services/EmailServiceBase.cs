@@ -5,9 +5,9 @@ namespace ProjectTemplate.Dashboard.Services
 {
     public abstract class EmailServiceBase
     {
-        private readonly string smtpServerAddress = "smtppro.zoho.com";
+        private readonly string smtpServerAddress = "smtp.server.com";
         private readonly int smtpPort = 587;
-        private readonly string smtpLoginPassword = "g4fHRBULja54";
+        private readonly string smtpLoginPassword = "------------";
         private readonly string sendFromEmail;
         private readonly string displayName;
 
