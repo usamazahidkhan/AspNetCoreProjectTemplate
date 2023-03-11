@@ -1,57 +1,59 @@
-Enterprise Ready Project Template based on Asp.Net Core C# .Net7
-
-------------- Features Already Added -------------
-
-Backend :
-
-*) Builtin Entity Auditing
-*) Domain Events
-*) CQRS
-*) Specification Pattern
-*) Unit Of Work Pattern
-*) Repository Pattern
-*) Seed Data
-*) Email Sending
-*) Object Mapping
-*) Validation
-
-Frontend :
-
-*) Enterprise Ready Dashboard UI/Layouts/Landing Page
-*) UI for User Signup/Login/Reset Password/Forgot Password
-
-
-
-------------- Features Planned to Add -------------
-
-Backend :
-
-*) ICurrentUser for Middlewares & Blazor
-*) ICurrentRequest for Middlewares & Blazor
-*) Multi tenancy (Shared/Dedicated/Hybrid DB Approach)
-*) Seperate Independent Module for User/Account Management with Active/Lockout/Removal
-*) User/Permission for Users (User Claims) & Role Permissions
-*) File Management
-*) Rate Limiting
-*) Dynamic Service Data Caching
-*) Response Caching (Endpoint Caching)
-*) Scheduling (Hangfire)
-*) IP based User Location Tracking API
-*) 2F/MFA Authentication
-*) Bar code Scan Login with Mobile from Desktop (Like Whatsapp)
-*) Social Logins
-*) Builtin CMS Features
-
-Frontend :
-
-*) Same Browser tab Synchronization in same origin (https://blog.bitsrc.io/4-ways-to-communicate-across-browser-tabs-in-realtime-e4f5f6cbedca)
-*) Script injection in Blazor (https://github.com/excubo-ag/Blazor.ScriptInjection)
-*) UI for Users/Role/Role Permissions/User Roles/ User Claims (Access Management)
-*) Dark/Light Mode
-*) RTL support
-*) Multi Language/Localization
-*) Render Blazor Components only When windows Resizes for different Viewports (eg. Mudblazor)
-*) Image Lazy Loading
-*) File Upload Control with preview and progress bar
-*) 2F/MFA Authentication
-*) Social Logins
+<div>
+<div>Enterprise Ready Project Template based on Asp.Net Core C# .Net7</div>
+<div></div>
+<div>------------- Features Already Added -------------</div>
+<div></div>
+<div>Backend :</div>
+<div></div>
+<div>*) Builtin Entity Auditing</div>
+<div>*) Domain Events</div>
+<div>*) CQRS</div>
+<div>*) Specification Pattern</div>
+<div>*) Unit Of Work Pattern</div>
+<div>*) Repository Pattern</div>
+<div>*) Seed Data</div>
+<div>*) Email Sending</div>
+<div>*) Object Mapping</div>
+<div>*) Vadivdation</div>
+<div></div>
+<div>Frontend :</div>
+<div></div>
+<div>*) Enterprise Ready Dashboard UI/Layouts/Landing Page</div>
+<div>*) UI for User Signup/Login/Reset Password/Forgot Password</div>
+<div></div>
+<div></div>
+<div></div>
+<div>------------- Features Planned to Add -------------</div>
+<div></div>
+<div>Backend :</div>
+<div></div>
+<div>*) ICurrentUser for Middlewares & Blazor</div>
+<div>*) ICurrentRequest for Middlewares & Blazor</div>
+<div>*) Multi tenancy (Shared/Dedicated/Hybrid DB Approach)</div>
+<div>*) Seperate Independent Module for User/Account Management with Active/Lockout/Removal</div>
+<div>*) User/Permission for Users (User Claims) & Rdive Permissions</div>
+<div>*) File Management</div>
+<div>*) Rate divmiting</div>
+<div>*) Dynamic Service Data Caching</div>
+<div>*) Response Caching (Endpoint Caching)</div>
+<div>*) Schedudivng (Hangfire)</div>
+<div>*) IP based User Location Tracking API</div>
+<div>*) 2F/MFA Authentication</div>
+<div>*) Bar code Scan Login with Mobile from Desktop (divke Whatsapp)</div>
+<div>*) Social Logins</div>
+<div>*) Builtin CMS Features</div>
+<div></div>
+<div>Frontend :</div>
+<div></div>
+<div>*) Same Browser tab Synchronization in same origin (https://blog.bitsrc.io/4-ways-to-communicate-across-browser-tabs-in-realtime-e4f5f6cbedca)</div>
+<div>*) Script injection in Blazor (https://github.com/excubo-ag/Blazor.ScriptInjection)</div>
+<div>*) UI for Users/Rdive/Rdive Permissions/User Rdives/ User Claims (Access Management)</div>
+<div>*) Dark/divght Mode</div>
+<div>*) RTL support</div>
+<div>*) Multi Language/Locadivzation</div>
+<div>*) Render Blazor Components only When windows Resizes for different Viewports (eg. Mudblazor)</div>
+<div>*) Image Lazy Loading</div>
+<div>*) File Upload Contrdiv with preview and progress bar</div>
+<div>*) 2F/MFA Authentication</div>
+<div>*) Social Logins</div>
+</div>
