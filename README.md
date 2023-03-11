@@ -39,7 +39,7 @@
 <div>*) Schedudivng (Hangfire)</div>
 <div>*) IP based User Location Tracking API</div>
 <div>*) 2F/MFA Authentication</div>
-<div>*) Bar code Scan Login with Mobile from Desktop (divke Whatsapp)</div>
+<div>*) Bar code Scan Login with Mobile from Desktop (Like Whatsapp)</div>
 <div>*) Social Logins</div>
 <div>*) Builtin CMS Features</div>
 <div></div>
