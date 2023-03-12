@@ -1,22 +1,23 @@
 ﻿using System.Net.Mail;
 using System.Net;
 
-namespace ProjectTemplate.Dashboard.Services
+namespace ProjectTemplate.Infrastructure.Services
 {
     public abstract class EmailServiceBase
     {
-        private readonly string smtpServerAddress = "smtp.server.com";
-        private readonly int smtpPort = 587;
-        private readonly string smtpLoginPassword = "------------";
+        private readonly string smtpServerAddress;
+        private readonly int smtpPort;
+        private readonly string smtpLoginPassword;
         private readonly string sendFromEmail;
-        private readonly string displayName;
 
         private readonly SmtpClient _smtpClient;
 
-        protected EmailServiceBase(string sendFromEmail, string displayName)
+        protected EmailServiceBase(string smtpServerAddress, int smtpPort, string smtpLoginPassword, string sendFromEmail)
         {
+            this.smtpServerAddress = smtpServerAddress;
+            this.smtpPort = smtpPort;
+            this.smtpLoginPassword = smtpLoginPassword;
             this.sendFromEmail = sendFromEmail;
-            this.displayName = displayName;
 
             _smtpClient = new SmtpClient(smtpServerAddress, smtpPort)
             {
@@ -32,7 +33,6 @@ namespace ProjectTemplate.Dashboard.Services
             var message = GetMailMessageInstance(
                 subject,
                 body,
-                displayName,
                 sendFromEmail,
                 sendToEmail
             );
@@ -40,12 +40,12 @@ namespace ProjectTemplate.Dashboard.Services
             await _smtpClient.SendMailAsync(message);
         }
 
-        private static MailMessage GetMailMessageInstance(string subject, string body, string displayName, string senderEmail, string reciverEmail)
+        private static MailMessage GetMailMessageInstance(string subject, string body, string senderEmail, string reciverEmail)
         {
             var message = new MailMessage
             {
                 IsBodyHtml = true,
-                From = new MailAddress(senderEmail, displayName),
+                From = new MailAddress(senderEmail, subject),
                 Subject = subject,
                 Body = body
             };

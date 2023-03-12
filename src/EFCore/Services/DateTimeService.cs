@@ -1,6 +1,6 @@
 ﻿using ProjectTemplate.Application;
 
-namespace ProjectTemplate.EFCoreAndIdentity.Services;
+namespace ProjectTemplate.Infrastructure.Services;
 
 public class DateTimeService : IDateTime
 {

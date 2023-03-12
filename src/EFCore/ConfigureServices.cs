@@ -8,6 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using MediatR;
 using ProjectTemplate.Infrastructure.EfCore;
+using ProjectTemplate.Infrastructure.Services;
 
 namespace Microsoft.Extensions.DependencyInjection
 {
