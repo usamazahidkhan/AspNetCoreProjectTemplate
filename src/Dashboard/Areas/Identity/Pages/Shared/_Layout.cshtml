@@ -7,48 +7,44 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<meta charset="utf-8" />
-	<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-	<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
 
-	<title>@ViewData["Title"]</title>
+    <title>@ViewData["Title"]</title>
 
-	<link href="https://cdn.jsdelivr.net/npm/@@tabler/core@latest/dist/css/tabler.min.css" rel="stylesheet" />
-	<link href="https://cdn.jsdelivr.net/npm/@@tabler/core@latest/dist/css/tabler-flags.min.css" rel="stylesheet" />
-	<link href="https://cdn.jsdelivr.net/npm/@@tabler/core@latest/dist/css/tabler-payments.min.css" rel="stylesheet" />
-	<link href="https://cdn.jsdelivr.net/npm/@@tabler/core@latest/dist/css/tabler-vendors.min.css" rel="stylesheet" />
-	<link href="https://cdn.jsdelivr.net/npm/@@tabler/core@latest/dist/css/demo.min.css" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/@@tabler/core@latest/dist/css/tabler.min.css" rel="stylesheet" />
 
-	<style>
-		@@import url('https://rsms.me/inter/inter.css');
+    <style>
+        @@import url('https://rsms.me/inter/inter.css');
 
-		:root {
-			--tblr-font-sans-serif: 'Inter Var', -apple-system, BlinkMacSystemFont, San Francisco, Segoe UI, Roboto, Helvetica Neue, sans-serif;
-		}
+        :root {
+            --tblr-font-sans-serif: 'Inter Var', -apple-system, BlinkMacSystemFont, San Francisco, Segoe UI, Roboto, Helvetica Neue, sans-serif;
+        }
 
-		body {
-			font-feature-settings: "cv03", "cv04", "cv11";
-		}
-	</style>
+        body {
+            font-feature-settings: "cv03", "cv04", "cv11";
+        }
+    </style>
 </head>
 <body class=" d-flex flex-column">
 
-	<div class="page page-center">
-		<div class="container container-tight py-4">
-			<div class="text-center mb-4">
-				<a href="/" class="navbar-brand navbar-brand-autodark">
-					<img src="~/logo.png" height="75" width="75" />
-				</a>
-			</div>
+    <div class="page page-center">
+        <div class="container container-tight py-4">
+            <div class="text-center mb-4">
+                <a href="/" class="navbar-brand navbar-brand-autodark">
+                    <img src="~/logo-dark.png" height="47" />
+                </a>
+            </div>
 
-			@RenderBody()
+            @RenderBody()
 
-		</div>
-	</div>
+        </div>
+    </div>
 
-	<script src="https://cdn.jsdelivr.net/npm/@@tabler/core@latest/dist/js/tabler.min.js?1674944800" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/@@tabler/core@latest/dist/js/tabler.min.js" defer></script>
 
-	@await RenderSectionAsync("Scripts", required: false)
+    @await RenderSectionAsync("Scripts", required: false)
 
 </body>
 </html>
