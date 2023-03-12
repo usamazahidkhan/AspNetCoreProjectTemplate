@@ -1,6 +1,15 @@
 # Enterprise Ready Project Template based on Asp.Net Core C# .Net7
 
-![alt text](https://itsglobal.tech/wp-content/uploads/2020/06/site-logo-white.svg)
+![alt text](https://raw.githubusercontent.com/usamazahidkhan/AspNetCoreProjectTemplate/master/Screenshots/dashboard.png)
+
+![alt text](https://raw.githubusercontent.com/usamazahidkhan/AspNetCoreProjectTemplate/master/Screenshots/list.png)
+
+![alt text](https://raw.githubusercontent.com/usamazahidkhan/AspNetCoreProjectTemplate/master/Screenshots/register.png)
+
+![alt text](https://raw.githubusercontent.com/usamazahidkhan/AspNetCoreProjectTemplate/master/Screenshots/login.png)
+
+![alt text](https://raw.githubusercontent.com/usamazahidkhan/AspNetCoreProjectTemplate/master/Screenshots/forgotpassword.png)
+
 
 ## ------------- Features Already Added -------------
 
