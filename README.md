@@ -1,5 +1,7 @@
 # Enterprise Ready Project Template based on Asp.Net Core C# .Net7
 
+![alt text](https://itsglobal.tech/wp-content/uploads/2020/06/site-logo-white.svg)
+
 ## ------------- Features Already Added -------------
 
 ### Backend :
