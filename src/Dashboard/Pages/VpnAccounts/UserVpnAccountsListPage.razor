@@ -31,7 +31,7 @@
                             <MudButton Href="@PageRoutes.createUser" Size="Size.Small"
                                        StartIcon="@Icons.Material.Sharp.Add"
                                        Color="Color.Primary" Variant="Variant.Filled">
-                                Add Vpn Account
+                                Add Users
                             </MudButton>
                         </div>
                         <MudSpacer />
@@ -56,10 +56,14 @@
                         <MudTd DataLabel="Created On">@item.UserName</MudTd>
                         <MudTd DataLabel="User Name">@item.Email</MudTd>
                         <MudTd DataLabel="Status">
-                            <MudChip Color="statusColor[item.EmailConfirmed]"
-                                     Size="Size.Small" Variant="Variant.Filled">
-                                @item.EmailConfirmed
-                            </MudChip>
+                            @if (item.EmailConfirmed)
+                            {
+                                <MudIcon Icon="@Icons.Material.Filled.Check" Size="Size.Small" Color="Color.Success" />
+                            }
+                            else
+                            {
+                                <MudIcon Icon="@Icons.Material.Filled.Close" Size="Size.Small" Color="Color.Warning" />
+                            }
                         </MudTd>
                         <MudTd DataLabel="Actions">
                             <MudIconButton Icon="@Icons.Material.Outlined.Edit"
@@ -91,11 +95,6 @@
 
 @code {
 
-    private Dictionary<bool, Color> statusColor = new() {
-        { true, Color.Success },
-        { false, Color.Warning }
-    };
-
     private IEnumerable<ApplicationUser> pagedData;
     private MudTable<ApplicationUser> table;
 
@@ -106,7 +105,7 @@
     {
         var data = userManager.Users;
 
-        var users = await data.PaginatedListAsync(state.Page, state.PageSize);
+        var users = await data.PaginatedListAsync(state.Page + 1, state.PageSize);
 
         pagedData = users.Items;
         totalItems = users.TotalCount;
