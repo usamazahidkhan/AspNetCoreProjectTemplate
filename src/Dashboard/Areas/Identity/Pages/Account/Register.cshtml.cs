@@ -16,14 +16,13 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.WebUtilities;
 using Microsoft.Extensions.Logging;
 using ProjectTemplate.Application;
-using ProjectTemplate.EFCoreAndIdentity.Identity;
 
 namespace ProjectTemplate.Dashboard.Areas.Identity.Pages.Account
 {
     public class RegisterModel : PageModel
     {
         private readonly SignInManager<ApplicationUser> _signInManager;
-        private readonly UserManager<ApplicationUser> _userManager;
+        private readonly UserManager _userManager;
         private readonly IUserStore<ApplicationUser> _userStore;
         private readonly IUserEmailStore<ApplicationUser> _emailStore;
         private readonly ILogger<RegisterModel> _logger;
@@ -31,7 +30,7 @@ namespace ProjectTemplate.Dashboard.Areas.Identity.Pages.Account
         private readonly IMediator mediator;
 
         public RegisterModel(
-            UserManager<ApplicationUser> userManager,
+            UserManager userManager,
             IUserStore<ApplicationUser> userStore,
             SignInManager<ApplicationUser> signInManager,
             ILogger<RegisterModel> logger,

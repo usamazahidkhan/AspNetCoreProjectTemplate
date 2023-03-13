@@ -1,5 +1,4 @@
 ﻿using ProjectTemplate.Application;
-using ProjectTemplate.EFCoreAndIdentity.Identity;
 using ProjectTemplate.EFCoreAndIdentity.Persistence;
 using ProjectTemplate.EFCoreAndIdentity.Persistence.Interceptors;
 using ProjectTemplate.EFCoreAndIdentity.Services;
@@ -42,6 +41,7 @@ namespace Microsoft.Extensions.DependencyInjection
             //Identity services
             services.AddIdentity<ApplicationUser, IdentityRole>(options => options.SignIn.RequireConfirmedAccount = true)
                .AddRoles<IdentityRole>()
+               .AddUserManager<UserManager>()
                .AddEntityFrameworkStores<ApplicationDbContext>()
                .AddDefaultTokenProviders();
 
