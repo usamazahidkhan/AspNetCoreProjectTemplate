@@ -58,6 +58,7 @@
 * Bar code Scan Login with Mobile from Desktop (Like Whatsapp)
 * Social Logins
 * Builtin CMS Features
+* Country List
 
 ### Frontend :
 
@@ -72,3 +73,4 @@
 * File Upload Control with preview and progress bar
 * 2F/MFA Authentication
 * Social Logins
+* Country List form Input field
