@@ -42,6 +42,7 @@ namespace Microsoft.Extensions.DependencyInjection
             //Identity services
             services.AddIdentity<ApplicationUser, IdentityRole>(options => options.SignIn.RequireConfirmedAccount = true)
                .AddRoles<IdentityRole>()
+               .AddUserManager<UserManager>()
                .AddEntityFrameworkStores<ApplicationDbContext>()
                .AddDefaultTokenProviders();
 
