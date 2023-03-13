@@ -1,4 +1,4 @@
-﻿@attribute [Route(PageRoutes.createVpnAccount)]
+﻿@attribute [Route(PageRoutes.createUser)]
 
 <PageTitle> Create VPN Account </PageTitle>
 
@@ -78,7 +78,7 @@
     {
         if (await mediator.Send(model))
         {
-            navManager.NavigateTo(PageRoutes.vpnAccounts);
+            navManager.NavigateTo(PageRoutes.users);
         }
     }
 

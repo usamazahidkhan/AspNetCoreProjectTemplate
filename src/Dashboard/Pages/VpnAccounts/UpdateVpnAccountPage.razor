@@ -1,4 +1,4 @@
-﻿@attribute [Route(PageRoutes.updateVpnAccount + "/{id}")]
+﻿@attribute [Route(PageRoutes.updateUser+ "/{id}")]
 
 @inject IMediator mediator
 @inject NavigationManager navManager
@@ -90,7 +90,7 @@
     {
         if (await mediator.Send(model))
         {
-            navManager.NavigateTo(PageRoutes.vpnAccounts);
+            navManager.NavigateTo(PageRoutes.users);
         }
     }
 }

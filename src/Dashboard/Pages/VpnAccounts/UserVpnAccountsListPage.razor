@@ -1,6 +1,6 @@
-﻿@attribute [Route(PageRoutes.vpnAccounts)]
+﻿@attribute [Route(PageRoutes.users)]
 
-@inject IMediator mediator
+@inject UserManager userManager
 
 <!-- Page header -->
 <div class="page-header d-print-none">
@@ -12,7 +12,7 @@
                     Overview
                 </div>
                 <h2 class="page-title">
-                    My Vpn Accounts
+                    All Users
                 </h2>
             </div>
         </div>
@@ -24,14 +24,14 @@
         <div class="row">
             <div class="col-12">
                 <MudTable Dense="true" Hover="true" Bordered="true" Striped="true"
-                          ServerData="@(new Func<TableState, Task<TableData<VpnAccountDto>>>(ServerReload))"
+                          ServerData="@(new Func<TableState, Task<TableData<ApplicationUser>>>(ServerReload))"
                           @ref="table" class="shadow bg-light">
                     <ToolBarContent>
                         <div class="my-3">
-                            <MudButton Href="@PageRoutes.createVpnAccount" Size="Size.Small"
+                            <MudButton Href="@PageRoutes.createUser" Size="Size.Small"
                                        StartIcon="@Icons.Material.Sharp.Add"
                                        Color="Color.Primary" Variant="Variant.Filled">
-                                Add Vpn Account
+                                Add Users
                             </MudButton>
                         </div>
                         <MudSpacer />
@@ -45,31 +45,33 @@
 
                     <HeaderContent>
                         <MudTh>Id</MudTh>
-                        <MudTh>Created On</MudTh>
                         <MudTh>User Name</MudTh>
-                        <MudTh>Status</MudTh>
-                        <MudTh>Expired On</MudTh>
+                        <MudTh>Email</MudTh>
+                        <MudTh>Email Confirmed</MudTh>
                         <MudTh>Actions</MudTh>
                     </HeaderContent>
 
-                    <RowTemplate>
-                        <MudTd DataLabel="Id">@context.id</MudTd>
-                        <MudTd DataLabel="Created On">@context.createdOn.ToShortDateString()</MudTd>
-                        <MudTd DataLabel="User Name">@context.userName</MudTd>
+                    <RowTemplate Context="item">
+                        <MudTd DataLabel="Id">@item.Id</MudTd>
+                        <MudTd DataLabel="Created On">@item.UserName</MudTd>
+                        <MudTd DataLabel="User Name">@item.Email</MudTd>
                         <MudTd DataLabel="Status">
-                            <MudChip Color="statusColor[context.status]"
-                                     Size="Size.Small" Variant="Variant.Filled">
-                                @context.status
-                            </MudChip>
+                            @if (item.EmailConfirmed)
+                            {
+                                <MudIcon Icon="@Icons.Material.Filled.Check" Size="Size.Small" Color="Color.Success" />
+                            }
+                            else
+                            {
+                                <MudIcon Icon="@Icons.Material.Filled.Close" Size="Size.Small" Color="Color.Warning" />
+                            }
                         </MudTd>
-                        <MudTd DataLabel="Expired On">@context.expiredOn?.ToShortDateString() </MudTd>
                         <MudTd DataLabel="Actions">
                             <MudIconButton Icon="@Icons.Material.Outlined.Edit"
-                                           Href="@(PageRoutes.updateVpnAccount + $"/{context.id}")"
-                                           Size="Size.Small" Color="Color.Primary" aria-label="github"></MudIconButton>
+                                           Href="@(PageRoutes.updateUser + $"/{item.Id}")"
+                                           Size="Size.Small" Color="Color.Primary" aria-label="update"></MudIconButton>
                             <MudIconButton Icon="@Icons.Material.Outlined.Delete"
-                                           Href="@(PageRoutes.updateVpnAccount + $"/{context.id}")"
-                                           Size="Size.Small" Color="Color.Warning" aria-label="github"></MudIconButton>
+                                           Href="@(PageRoutes.updateUser + $"/{item.Id}")"
+                                           Size="Size.Small" Color="Color.Warning" aria-label="delete"></MudIconButton>
                         </MudTd>
                     </RowTemplate>
 
@@ -93,29 +95,22 @@
 
 @code {
 
-    private Dictionary<VpnAccountStatus, Color> statusColor = new()
-    {
-        { VpnAccountStatus.active, Color.Success },
-        { VpnAccountStatus.pending, Color.Warning },
-        { VpnAccountStatus.suspended, Color.Error },
-        { VpnAccountStatus.expired, Color.Dark }
-    };
-
-    private IEnumerable<VpnAccountDto> pagedData;
-    private MudTable<VpnAccountDto> table;
+    private IEnumerable<ApplicationUser> pagedData;
+    private MudTable<ApplicationUser> table;
 
     private int totalItems;
     private string searchString = null;
 
-    private async Task<TableData<VpnAccountDto>> ServerReload(TableState state)
+    private async Task<TableData<ApplicationUser>> ServerReload(TableState state)
     {
-        var data = await mediator.Send(new GetVpnAccountListByUserQuery());
+        var data = userManager.Users;
 
-        totalItems = data.Count();
+        var users = await data.PaginatedListAsync(state.Page + 1, state.PageSize);
 
-        pagedData = data.Skip(state.Page * state.PageSize).Take(state.PageSize).ToArray();
+        pagedData = users.Items;
+        totalItems = users.TotalCount;
 
-        return new TableData<VpnAccountDto>() { TotalItems = totalItems, Items = pagedData };
+        return new TableData<ApplicationUser>() { TotalItems = totalItems, Items = pagedData };
     }
 
     private void OnSearch(string text)

@@ -4,9 +4,9 @@
     {
         public const string dashboard = "/Dashboard";
         public const string gettingStarted = "/GettingStarted";
-        public const string vpnAccounts = "/VpnAccounts";
-        public const string createVpnAccount = vpnAccounts + "/Create";
-        public const string updateVpnAccount = vpnAccounts + "/Update";
+        public const string users = "/AllUsers";
+        public const string createUser = users + "/Create";
+        public const string updateUser = users + "/Update";
         public const string payments = "/Payments";
         public const string support = "/Support";
         public const string profile = "/Profile";
