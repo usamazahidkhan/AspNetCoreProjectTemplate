@@ -5,7 +5,7 @@
 
 ![alt text](https://raw.githubusercontent.com/usamazahidkhan/AspNetCoreProjectTemplate/master/Screenshots/dashboard.png)
 
-![alt text](https://raw.githubusercontent.com/usamazahidkhan/AspNetCoreProjectTemplate/master/Screenshots/list.png)
+![alt text](https://raw.githubusercontent.com/usamazahidkhan/AspNetCoreProjectTemplate/master/Screenshots/users-list.png)
 
 
 ## Asp.Net Core Identity Pages
