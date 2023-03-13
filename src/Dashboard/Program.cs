@@ -2,7 +2,6 @@ using ProjectTemplate.Dashboard.Areas.Identity;
 using ProjectTemplate.Dashboard.Services;
 using Microsoft.AspNetCore.Components.Authorization;
 using Microsoft.AspNetCore.Identity.UI.Services;
-using ProjectTemplate.EFCoreAndIdentity.Identity;
 using ProjectTemplate.EFCoreAndIdentity.Persistence;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;

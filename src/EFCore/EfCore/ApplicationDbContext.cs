@@ -1,11 +1,10 @@
 ﻿using System.Reflection;
-using ProjectTemplate.Application;
 using ProjectTemplate.Domain;
-using ProjectTemplate.EFCoreAndIdentity.Identity;
 using ProjectTemplate.EFCoreAndIdentity.Persistence.Interceptors;
 using MediatR;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Identity;
 
 namespace ProjectTemplate.EFCoreAndIdentity.Persistence
 {

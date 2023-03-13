@@ -1,5 +1,4 @@
 ﻿using ProjectTemplate.Application;
-using ProjectTemplate.EFCoreAndIdentity.Identity;
 using ProjectTemplate.EFCoreAndIdentity.Persistence;
 using ProjectTemplate.EFCoreAndIdentity.Persistence.Interceptors;
 using ProjectTemplate.EFCoreAndIdentity.Services;
